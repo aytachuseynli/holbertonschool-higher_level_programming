@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Define a class Square with size, position validation, and printing methods.
-"""
+"""Define a class Square."""
 
 
 class Square:
@@ -12,7 +10,6 @@ class Square:
         __size (int): The size of the square (private).
         __position (tuple): The position of the square (private).
     """
-
 
     def __init__(self, size=0, position=(0, 0)):
         """
