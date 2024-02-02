@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 class Square:
     """
     Represents a square with size, position validation, and printing methods.
