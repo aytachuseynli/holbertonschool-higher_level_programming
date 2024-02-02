@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Define a class Square with size, position validation, and printing methods.
+"""
+
+
 class Square:
     """
     Represents a square with size, position validation, and printing methods.
