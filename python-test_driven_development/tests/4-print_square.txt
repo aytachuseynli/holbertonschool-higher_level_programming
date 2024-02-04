@@ -23,7 +23,7 @@
 ##########
 
 >>> print_square(0)
-# (empty line, no output)
+# (no output, nothing printed)
 
 >>> print_square(1)
 #
@@ -42,4 +42,4 @@ TypeError: size must be an integer
 >>> print_square(-2)
 Traceback (most recent call last):
   ...
-ValueError: size must be >= 0 
+ValueError: size must be >= 0
