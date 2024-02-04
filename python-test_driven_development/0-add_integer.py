@@ -26,4 +26,7 @@ def add_integer(a, b=98):
         raise TypeError("b must be an integer or float")
 
     # Cast a and b to integers and return their sum
-    return int(a) + int(b)
+    a = int(a)
+    b = int(b)
+
+    return a + b
