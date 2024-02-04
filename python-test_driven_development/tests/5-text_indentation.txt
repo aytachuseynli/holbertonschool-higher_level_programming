@@ -1,0 +1,24 @@
+# Tests for text_indentation in 5-text_indentation.txt
+
+# Import the function
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Test cases with expected output
+>>> text_indentation("Hello. How are you today? I hope everything is fine.")
+Hello.$
+$
+How are you today?$
+$
+I hope everything is fine.$
+$
+>>> text_indentation("This is a sentence.")
+This is a sentence.$
+$
+>>> text_indentation("One. Two. Three.")
+One.$
+$
+Two.$
+$
+Three.$
+$
+
