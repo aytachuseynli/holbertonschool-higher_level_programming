@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 
 """
-print square
+print a square
 """
 
 
 def print_square(size):
     """
-    Prints a square with the character #.
+    Print a square
     """
-    if not isinstance(size, int) or (isinstance(size, float) and size < 0):
+
+    if not isinstance(size, int) or (isinstance(size, float) & size < 0):
         raise TypeError("size must be an integer")
 
     if size < 0:
@@ -19,4 +20,4 @@ def print_square(size):
         for _ in range(size):
             print("#", end="")
 
-         print()
+        print()
