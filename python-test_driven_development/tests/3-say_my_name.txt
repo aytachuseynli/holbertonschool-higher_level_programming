@@ -1,0 +1,28 @@
+# Tests for say_my_name in 3-say_my_name.txt
+
+# Import the function
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Test cases with expected output
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+>>> say_my_name("Alice")
+My name is Alice
+
+# Test cases with exceptions
+>>> say_my_name("Bob", 123)
+Traceback (most recent call last):
+  ...
+TypeError: first_name must be a string or last_name must be a string
+
+>>> say_my_name(456, "Smith")
+Traceback (most recent call last):
+  ...
+TypeError: first_name must be a string or last_name must be a string
+
+>>> say_my_name(789, 123)
+Traceback (most recent call last):
+  ...
+TypeError: first_name must be a string or last_name must be a string
+
