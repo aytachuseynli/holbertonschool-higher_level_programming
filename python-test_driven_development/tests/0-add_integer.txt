@@ -1,55 +1,79 @@
-===============================
-0. Integer addition module
-===============================
+===================================================
+Tests for text_indentation in 0-add_integer.py
+===================================================
 
+>>> add_integer = __import__ ('0-add_integer').add_integer
 
-Import module:
-==============
->>> add_integer = __import__('0-add_integer').add_integer
+>>> add_integer(1, 2)
+3
 
+>>> add_integer(100, -2)
+98
 
-Test cases with expected output:
-===============================
->>> add_integer(0, 0)
-0
+>>> add_integer(2)
+100
 
->>> add_integer(-5, -10)
--15
+>>> add_integer(100.3, -2)
+98
 
->>> add_integer(7, 3)
-10
+>>> add_integer(10, 3.7)
+13
 
->>> add_integer(15.5, 8.5)
-23
+>>> add_integer(69, 42)
+111
 
->>> add_integer(1000000, -999999)
-1
+>> add_integer(inf)
+inf
 
-
-Test cases with exceptions:
-===============================
->>> add_integer("apple", 5)
+>>> add_integer(float('nan'))
 Traceback (most recent call last):
-    ...
-TypeError: a must be an integer or float
-
->>> add_integer(8, "orange")
-Traceback (most recent call last):
-    ...
-TypeError: b must be an integer or float
-
->>> add_integer(None, 5)
-Traceback (most recent call last):
-    ...
-TypeError: a must be an integer or float
-
->>> add_integer(2, float('inf'))
-Traceback (most recent call last):
-    ...
-OverflowError: cannot convert float infinity to integer
-
->>> add_integer(2, float('NaN'))
-Traceback (most recent call last):
-    ...
+...
 ValueError: cannot convert float NaN to integer
 
+>>> add_integer(9223372036854775807, 1)
+9223372036854775808
+
+>>> add_integer('hello', 43)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(23, 'holberton')
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+>>> add_integer(None, 'holberton')
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer('12a', 'Zoref')
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(23, None)
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+>>> add_integer(23, [1, 2, 3])
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+>>> add_integer([3, 4, 5])
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer([])
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(float('inf'))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
