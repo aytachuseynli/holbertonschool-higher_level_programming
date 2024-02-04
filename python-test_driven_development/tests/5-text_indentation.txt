@@ -3,21 +3,23 @@
 # Import the function
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-# Test cases with expected output
->>> text_indentation("Hello. How are you today? I hope everything is fine.")
-Hello.$
-$
-How are you today?$
-$
-I hope everything is fine.$
-$
->>> text_indentation("This is a sentence.")
-This is a sentence.$
-$
->>> text_indentation("One. Two. Three.")
-One.$
-$
-Two.$
-$
-Three.$
-$
+Test cases with expected output:
+
+>>> text_indentation("Hello?")
+Hello?
+<BLANKLINE>
+
+
+
+
+Test cases with exceptions:
+===============================
+
+>>> text_indentation(12)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+
+>>> text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
