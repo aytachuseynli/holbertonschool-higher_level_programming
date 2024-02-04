@@ -13,21 +13,26 @@ def text_indentation(text):
     Raises:
         TypeError: If text is not a string.
     """
+
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    separators = ['.', '?', ':']
-    lines = []
+    for i in range(0, len(text)):
+        if text[i] in [".", "?", ":"]:
+            print(text[i], end="")
+            print("\n")
+        elif text[i] == " ":
+            for j in range(i, 0, -1):
+                if text[j] == " ":
+                    continue
+                elif text[j] in [".", "?", ":"]:
+                    break
+                else:
+                    print(text[i], end="")
+                    break
+        else:
+            print(text[i], end="")
 
-    current_line = ''
-    for char in text:
-        current_line += char
-        if char in separators:
-            lines.append(current_line.strip())
-            lines.append('\n')
-            current_line = ''
 
-    if current_line:
-        lines.append(current_line.strip())
-
-    print(''.join(lines))
+if __name__ == "__main__":
+    text_indentation("Holberton School")
