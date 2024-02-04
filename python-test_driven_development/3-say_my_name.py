@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 
 """
-3-say_my_name.py, tests/3-say_my_name.txt
+Say my full name
 """
 
 
 def say_my_name(first_name, last_name=""):
     """
-    Prints the full name.
+    Print a full name
     """
 
-     if not isinstance(first_name, str):
+    if not isinstance(first_name, str):
         raise TypeError("first_name must be a string")
 
     if not isinstance(last_name, str):
