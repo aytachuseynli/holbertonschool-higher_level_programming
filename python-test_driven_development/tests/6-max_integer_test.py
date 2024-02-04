@@ -31,6 +31,33 @@ class TestMaxInteger(unittest.TestCase):
         result = max_integer([2.5, 1.2, 4.8, 3.7])
         self.assertEqual(result, 4.8)
 
+    def test_regular_list(self):
+        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
+        self.assertEqual(max_integer([1, 3, 4, 2]), 4)
+
+    def test_negative_numbers(self):
+        self.assertEqual(max_integer([-1, -2, -3, -4]), -1)
+        self.assertEqual(max_integer([-1, -3, -4, -2]), -1)
+
+    def test_mixed_numbers(self):
+        self.assertEqual(max_integer([1, -2, 3, -4]), 3)
+        self.assertEqual(max_integer([-1, 2, -3, 4]), 4)
+
+    def test_one_element(self):
+        self.assertEqual(max_integer([1]), 1)
+
+    def test_duplicate_numbers(self):
+        self.assertEqual(max_integer([5, 5, 5, 5]), 5)
+
+    def test_float_numbers(self):
+        self.assertEqual(max_integer([2.5, 1.2, 4.8, 3.7]), 4.8)
+
+    def test_mixed_float_and_integer(self):
+        self.assertEqual(max_integer([2.5, 1, 4, 3]), 4)
+
+    def test_large_numbers(self):
+        self.assertEqual(max_integer([10**9, 10**9 + 1, 10**9 - 1]), 10**9 + 1)
+
+
 if __name__ == '__main__':
     unittest.main()
-
