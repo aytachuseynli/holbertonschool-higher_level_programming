@@ -1,10 +1,12 @@
 #!/usr/bin/python3
-"""define rectangle properties"""
+"""
+Define rectangle properties
+"""
 
 
 class Rectangle:
     """
-    Rectangle class represents a rectangle.
+    A class representing a rectangle with width and height attributes.
 
     Attributes:
         _width (int): Private attribute representing the width of the rectangle.
