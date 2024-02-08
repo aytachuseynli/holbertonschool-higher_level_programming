@@ -5,7 +5,7 @@
 class Rectangle:
     """Define a rectangle class"""
     number_of_instances = 0
-    print_symbol =  "#"
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """Initialized method"""
@@ -17,7 +17,7 @@ class Rectangle:
         """String representation"""
         if self.width == 0 or self.height == 0:
             return ""
-        return '\n'.join(['#' * self.width for _ in range(self.height)])
+        return '\n'.join([self.print_symbol * self.width for _ in range(self.height)])
 
     def __repr__(self):
         """repr"""
