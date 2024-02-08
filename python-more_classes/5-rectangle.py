@@ -18,11 +18,10 @@ class Rectangle:
     def __repr__(self):
         """repr"""
         return f"Rectangle({self.width}, {self.height})"
-    
+
     def __del__(self):
         """del"""
         print("Bye rectangle...")
-
 
     @property
     def width(self):
