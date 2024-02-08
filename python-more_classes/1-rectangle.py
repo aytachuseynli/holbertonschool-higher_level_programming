@@ -1,39 +1,38 @@
 #!/usr/bin/python3
-"""Rectangle class"""
+""" Rectangle class """
 
 
 class Rectangle:
-    """Defines a rectangle with width and height attributes."""
-    
+    """Define a rectangle class """
     def __init__(self, width=0, height=0):
-        """Initialized method"""
-        self._width = width
-        self._height = height
+        """Initialized  method """
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
-        """Getter method for the width attribute"""
-        return self._width
+        """ getter method for width """
+        return self.__width
 
     @width.setter
     def width(self, value):
-        """Setter method for the width attribute"""
+        """ setter method for width """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
-        self._width = value
+        self.__width = value
 
     @property
     def height(self):
-        """Getter method for the height attribute."""
-        return self._height
+        """ getter method for height """
+        return self.__height
 
     @height.setter
     def height(self, value):
-        """Setter method for the width attribute"""
+        """ setter method for height """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
-        self._height = value
+        self.__height = value
