@@ -17,9 +17,9 @@ class Rectangle:
         """String representation"""
         if self.width == 0 or self.height == 0:
             return ""
-        return '\n'.join(
-                [str(self.print_symbol) * self.width for _ in range(self.height)]
-        )
+        return '\n'.join([
+            str(self.print_symbol) * self.width for _ in range(self.height)
+            ])
 
     def __repr__(self):
         """repr"""
