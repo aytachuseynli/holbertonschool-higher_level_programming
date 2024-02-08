@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-""" Rectangle class"""
+"""Rectangle class"""
 
 
 class Rectangle:
-    """Defines a rectangle with width and height attributes. """
+    """Defines a rectangle with width and height attributes."""
+    
     def __init__(self, width=0, height=0):
-        """ Initialized method"""
+        """Initialized method"""
         self._width = width
         self._height = height
 
@@ -25,7 +26,7 @@ class Rectangle:
 
     @property
     def height(self):
-        """Getter method for the height attribute. """
+        """Getter method for the height attribute."""
         return self._height
 
     @height.setter
