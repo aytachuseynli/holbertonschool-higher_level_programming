@@ -1,17 +1,13 @@
 #!/usr/bin/python3
 """
-Define rectangle properties
+Defines a rectangle with width and height attributes.
 """
 
 
 class Rectangle:
-
     def __init__(self, width=0, height=0):
-
-        self._width = 0
-        self._height = 0
-        self.width = width
-        self.height = height
+        self._width = width
+        self._height = height
 
     @property
     def width(self):
@@ -19,7 +15,6 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -32,7 +27,6 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
