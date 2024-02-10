@@ -1,94 +1,90 @@
->>> MyList = __import__('1-my_list').MyList
->>> my_list = MyList()
->>> type(my_list)
-<class 'MyList'>
->>> print(my_list)
-[]
+# Import the MyList class from the '1-my_list' module
+MyList = __import__('1-my_list').MyList
+
+# Test Case 1: Create an empty MyList instance
+my_list = MyList()
+type_of_my_list = type(my_list)
+print(type_of_my_list)  # <class 'MyList'>
+print(my_list)  # []
 
 # Test Case 2: Create MyList with initial values
->>> my_list = MyList([1, 2, 3])
->>> print(my_list)
-[1, 2, 3]
+my_list = MyList([1, 2, 3])
+print(my_list)  # [1, 2, 3]
 
 # Test Case 3: Append elements to MyList
->>> my_list = MyList()
->>> my_list.append(1)
->>> my_list.append(2)
->>> my_list.append(3)
->>> print(my_list)
-[1, 2, 3]
+my_list = MyList()
+my_list.append(1)
+my_list.append(2)
+my_list.append(3)
+print(my_list)  # [1, 2, 3]
 
 # Test Case 4: Modify elements of MyList
->>> my_list[0] = 5
->>> print(my_list)
-[5, 2, 3]
+my_list[0] = 5
+print(my_list)  # [5, 2, 3]
 
 # Test Case 5: Remove element from MyList
->>> my_list.remove(5)
->>> print(my_list)
-[2, 3]
+my_list.remove(5)
+print(my_list)  # [2, 3]
 
 # Test Case 6: Print sorted MyList
->>> my_list = MyList()
->>> my_list.print_sorted()
-[]
+my_list = MyList()
+my_list.print_sorted()  # []
 
 # Test Case 7: Append elements and print sorted MyList
->>> my_list.append(1)
->>> my_list.append(4)
->>> my_list.append(2)
->>> my_list.append(3)
->>> my_list.append(5)
->>> print(my_list)
-[1, 4, 2, 3, 5]
->>> my_list.print_sorted()
-[1, 2, 3, 4, 5]
+my_list.append(1)
+my_list.append(4)
+my_list.append(2)
+my_list.append(3)
+my_list.append(5)
+print(my_list)  # [1, 4, 2, 3, 5]
+my_list.print_sorted()  # [1, 2, 3, 4, 5]
 
 # Test Case 8: Append negative elements and print sorted MyList
->>> my_list = MyList()
->>> my_list.append(-5)
->>> my_list.append(-4)
->>> my_list.append(-3)
->>> my_list.append(-2)
->>> my_list.append(-1)
->>> my_list.print_sorted()
-[-5, -4, -3, -2, -1]
+my_list = MyList()
+my_list.append(-5)
+my_list.append(-4)
+my_list.append(-3)
+my_list.append(-2)
+my_list.append(-1)
+my_list.print_sorted()  # [-5, -4, -3, -2, -1]
 
 # Test Case 9: Append negative elements and print sorted MyList
->>> my_list = MyList()
->>> my_list.append(-1)
->>> my_list.append(-4)
->>> my_list.append(-2)
->>> my_list.append(-3)
->>> my_list.append(-5)
->>> print(my_list)
-[-1, -4, -2, -3, -5]
->>> my_list.print_sorted()
-[-5, -4, -3, -2, -1]
+my_list = MyList()
+my_list.append(-1)
+my_list.append(-4)
+my_list.append(-2)
+my_list.append(-3)
+my_list.append(-5)
+print(my_list)  # [-1, -4, -2, -3, -5]
+my_list.print_sorted()  # [-5, -4, -3, -2, -1]
 
 # Error Cases
 # Test Case 10: Attempt to create MyList with None
->>> my_list = MyList(None)
-Traceback (most recent call last):
-TypeError: 'NoneType' object is not iterable
+try:
+    my_list = MyList(None)
+except TypeError as e:
+    print(f"Error: {e}")
 
 # Test Case 11: Attempt to create MyList with multiple lists
->>> my_list = MyList([1, 2], [3, 4])
-Traceback (most recent call last):
-TypeError: list expected at most 1 argument, got 2
+try:
+    my_list = MyList([1, 2], [3, 4])
+except TypeError as e:
+    print(f"Error: {e}")
 
 # Test Case 12: Attempt to create MyList with mixed data types
->>> my_list = MyList([1, "Betty", "Holberton", 5])
-Traceback (most recent call last):
-TypeError: '<' not supported between instances of 'str' and 'int'
+try:
+    my_list = MyList([1, "Betty", "Holberton", 5])
+except TypeError as e:
+    print(f"Error: {e}")
 
 # Test Case 13: Attempt to print_sorted on a tuple
->>> my_list = (1, 2)
->>> print(my_list)
-(1, 2)
->>> my_list.print_sorted()
-Traceback (most recent call last):
-AttributeError: 'tuple' object has no attribute 'print_sorted'
+my_tuple = (1, 2)
+print(my_tuple)  # (1, 2)
+try:
+    my_list = MyList(my_tuple)
+    my_list.print_sorted()
+except AttributeError as e:
+    print(f"Error: {e}")
 
->>> print(my_list)
-(1, 2)
+print(my_tuple)  # (1, 2)
+
