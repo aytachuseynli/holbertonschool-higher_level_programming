@@ -13,12 +13,12 @@ from 5-save_to_json_file import save_to_json_file
 from 6-load_from_json_file import load_from_json_file
 
 def add_items_to_list_and_save(filename, *items):
-   #save add load
-
-
-    try:
+   """
+   save add load
+   """
+   try:
         existing_data = load_from_json_file(filename)
-    except (FileNotFoundError, json.JSONDecodeError):
+   except (FileNotFoundError, json.JSONDecodeError):
         existing_data = []
 
     existing_data.extend(items)
