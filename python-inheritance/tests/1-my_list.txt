@@ -1,87 +1,89 @@
-# Test Case 1: Create an empty MyList instance
-MyList = __import__('1-my_list').MyList
-my_list = MyList()
-type_of_my_list = type(my_list)
-assert type_of_my_list == MyList, f"Expected {MyList}, but got {type_of_my_list}"
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = MyList()
+>>> type(my_list)
+<class '1-my_list.MyList'>
 
-# Test Case 2: Create MyList with initial values
-my_list = MyList([1, 2, 3])
-assert my_list == [1, 2, 3], f"Expected [1, 2, 3], but got {my_list}"
+>>> print(my_list)
+[]
 
-# Test Case 3: Append elements to MyList
-my_list = MyList()
-my_list.append(1)
-my_list.append(2)
-my_list.append(3)
-assert my_list == [1, 2, 3], f"Expected [1, 2, 3], but got {my_list}"
+>>> my_list = MyList([1, 2, 3])
+>>> print(my_list)
+[1, 2, 3]
 
-# Test Case 4: Modify elements of MyList
-my_list[0] = 5
-assert my_list == [5, 2, 3], f"Expected [5, 2, 3], but got {my_list}"
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> print(my_list)
+[1, 2, 3]
 
-# Test Case 5: Remove element from MyList
-my_list.remove(5)
-assert my_list == [2, 3], f"Expected [2, 3], but got {my_list}"
+>>> my_list[0] = 5
+>>> print(my_list)
+[5, 2, 3]
 
-# Test Case 6: Print sorted MyList
-my_list = MyList()
-assert my_list.print_sorted() == None, "Expected None, but got something else"
+>>> my_list.remove(5)
+>>> print(my_list)
+[2, 3]
 
-# Test Case 7: Append elements and print sorted MyList
-my_list.append(1)
-my_list.append(4)
-my_list.append(2)
-my_list.append(3)
-my_list.append(5)
-assert my_list == [1, 4, 2, 3, 5], f"Expected [1, 4, 2, 3, 5], but got {my_list}"
-assert my_list.print_sorted() == None, "Expected None, but got something else"
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
 
-# Test Case 8: Append negative elements and print sorted MyList
-my_list = MyList()
-my_list.append(-5)
-my_list.append(-4)
-my_list.append(-3)
-my_list.append(-2)
-my_list.append(-1)
-assert my_list.print_sorted() == None, "Expected None, but got something else"
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
 
-# Test Case 9: Append negative elements and print sorted MyList
-my_list = MyList()
-my_list.append(-1)
-my_list.append(-4)
-my_list.append(-2)
-my_list.append(-3)
-my_list.append(-5)
-assert my_list == [-1, -4, -2, -3, -5], f"Expected [-1, -4, -2, -3, -5], but got {my_list}"
-assert my_list.print_sorted() == None, "Expected None, but got something else"
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
 
-# Error Cases
-# Test Case 10: Attempt to create MyList with None
-try:
-    my_list = MyList(None)
-except TypeError as e:
-    assert str(e) == "'NoneType' object is not iterable", f"Expected error 'NoneType' object is not iterable, but got {e}"
+>>> my_list = MyList()
+>>> my_list.append(-5)
+>>> my_list.append(-4)
+>>> my_list.append(-3)
+>>> my_list.append(-2)
+>>> my_list.append(-1)
+>>> my_list.print_sorted()
+[-5, -4, -3, -2, -1]
 
-# Test Case 11: Attempt to create MyList with multiple lists
-try:
-    my_list = MyList([1, 2], [3, 4])
-except TypeError as e:
-    assert str(e) == "list expected at most 1 argument, got 2", f"Expected error 'list expected at most 1 argument, got 2', but got {e}"
+>>> my_list = MyList()
+>>> my_list.append(-1)
+>>> my_list.append(-4)
+>>> my_list.append(-2)
+>>> my_list.append(-3)
+>>> my_list.append(-5)
+>>> print(my_list)
+[-1, -4, -2, -3, -5]
 
-# Test Case 12: Attempt to create MyList with mixed data types
-my_list = MyList([1, "Betty", "Holberton", 5])
-try:
-    assert my_list.print_sorted() == None, "Expected None, but got something else"
-except TypeError as e:
-    assert str(e) == "'<' not supported between instances of 'str' and 'int'", f"Expected error '<' not supported between instances of 'str' and 'int', but got {e}"
+>>> my_list.print_sorted()
+[-5, -4, -3, -2, -1]
 
-# Test Case 13: Attempt to print_sorted on a tuple
-my_list = (1, 2)
-assert my_list == (1, 2), f"Expected (1, 2), but got {my_list}"
-try:
-    my_list.print_sorted()
-except AttributeError as e:
-    assert str(e) == "'tuple' object has no attribute 'print_sorted'", f"Expected error 'tuple' object has no attribute 'print_sorted', but got {e}"
+>>> print(my_list)
+[-1, -4, -2, -3, -5]
 
-assert my_list == (1, 2), f"Expected (1, 2), but got {my_list}"
+>>> my_list = MyList(None)
+Traceback (most recent call last):
+TypeError: 'NoneType' object is not iterable
 
+>>> my_list = MyList([1, 2], [3, 4])
+Traceback (most recent call last):
+TypeError: list expected at most 1 argument, got 2
+
+>>> my_list = MyList([1, "Betty", "Holberton", 5])
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+>>> my_list = (1, 2)
+>>> print(my_list)
+(1, 2)
+
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+AttributeError: 'tuple' object has no attribute 'print_sorted'
+
+>>> print(my_list)
+(1, 2)
