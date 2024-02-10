@@ -14,10 +14,11 @@ def pascal_triangle(n):
         if triangle:
             last_row = triangle[-1]
             row.extend([sum(pair)
-                for pair in zip(last_row, last_row[1:])])
+                        for pair in zip(last_row, last_row[1:])])
             row.append(1)
         triangle.append(row)
     return triangle
+
 
 def print_triangle(triangle):
     for row in triangle:
