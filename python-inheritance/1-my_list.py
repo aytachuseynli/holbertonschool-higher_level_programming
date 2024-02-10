@@ -12,8 +12,8 @@ class MyList(list):
 
     def print_sorted(self):
         """
-        Sorts the list in ascending order using 
-        the built-in sort method and prints 
+        Sorts the list in ascending order using
+        the built-in sort method and prints
         the sorted list.
         """
         print(sorted(self))
