@@ -1,0 +1,64 @@
+# Test Case 1: Create an instance of BaseGeometry
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+
+# Test Case 2: Validate integer values successfully
+>>> bg.integer_validator("age", 12)
+>>> bg.integer_validator("distance", 89)
+
+# Test Case 3: Validate non-integer value (expecting a TypeError)
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+# Test Case 4: Validate integer value less than or equal to 0 (expecting a ValueError)
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+    ...
+ValueError: age must be greater than 0
+
+# Test Case 5: Validate integer value less than or equal to 0 (expecting a ValueError)
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
+    ...
+ValueError: distance must be greater than 0
+
+# Test Case 6: Validate non-integer values (expecting TypeError)
+>>> bg.integer_validator("name", True)
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+>>> bg.integer_validator("name", [1])
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+>>> bg.integer_validator("name", (1, 3))
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+>>> bg.integer_validator("name", {1, 3})
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+>>> bg.integer_validator("name", None)
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+# Test Case 7: Call area method (expecting an exception)
+>>> bg.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+# Test Case 8: Missing required positional arguments in integer_validator (expecting a TypeError)
+>>> bg.integer_validator()
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
