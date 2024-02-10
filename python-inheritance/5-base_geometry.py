@@ -4,7 +4,7 @@ Module 5-base_geometry.py
 """
 
 
-class baseGeometry:
+class BaseGeometry:
     """
     Empty class definition.
     """
