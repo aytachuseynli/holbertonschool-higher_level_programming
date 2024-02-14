@@ -4,7 +4,6 @@
 import json
 
 
-
 class Base:
     """
     Base class for managing object IDs and file I/O.
@@ -17,7 +16,7 @@ class Base:
         Initializes a Base instance with a unique ID.
 
         Args:
-            id (int): The ID to assign to the instance. If None, a new ID will be generated.
+            id (int): The ID to assign to the instance.
         """
         if id is not None:
             self.id = id
