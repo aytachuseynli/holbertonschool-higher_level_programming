@@ -68,7 +68,12 @@ class Rectangle(Base):
         Returns:
             dict: Dictionary representation of the rectangle.
         """
-        return {"id": self.id, "width": self.width, "height": self.height, "x": self.x, "y": self.y}
+        return {
+                "id": self.id, 
+                "width": self.width, 
+                "height": self.height, 
+                "x": self.x, 
+                "y": self.y}
 
     def __str__(self):
         """
@@ -77,5 +82,7 @@ class Rectangle(Base):
         Returns:
             str: String representation of the rectangle.
         """
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id, self.x, self.y, self.width, self.height
+            )
 
