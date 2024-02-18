@@ -55,7 +55,7 @@ class Rectangle(Base):
         self.__height = value
 
     @property
-    def x(self, value):
+    def x(self):
         """set/get method for the x coordinate attribute."""
         return self.__x
 
