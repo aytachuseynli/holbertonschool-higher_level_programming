@@ -71,11 +71,11 @@ class Base:
                     rectangle.width,
                     rectangle.height
             )
-        
+
         for square in list_sqaures:
             draw_square(square.x, square.y, square.size)
 
-        turtle.mainloop()
+            turtle.mainloop()
 
     @classmethod
     def save_to_file(cls, list_objs):
