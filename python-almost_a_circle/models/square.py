@@ -40,7 +40,6 @@ class Square(Rectangle):
                 self.size
         )
 
-
     def update(self, *args, **kwargs):
         """
         Updates attributes of the square.
