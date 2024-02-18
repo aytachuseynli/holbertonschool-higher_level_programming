@@ -30,7 +30,7 @@ class Base:
         """convert JSON string"""
         if list_dictionaries is None:
             return "[]"
-        return json.dumps(list_dictionaires)
+        return json.dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
