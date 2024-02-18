@@ -2,6 +2,7 @@
 """Base class """
 
 import json
+import turtle
 
 
 class Base:
@@ -24,46 +25,108 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
-    @classmethod
-    def create(cls, dictionary):
-        """
-        Creates a new instance from a dictionary.
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """convert JSON string"""
+        if list_dictionaries is None:
+            return "[]"
+        return json.dumps(list_dictionaires)
 
-        Args:
-            dictionary (dict): Dictionary containing attribute values.
-
-        Returns:
-            Base: An instance of the class.
-        """
-        obj = cls.__new__(cls)
-        obj.update(**dictionary)
-        return obj
-
-    @classmethod
-    def loadfromfile(cls):
-        """
-        Loads instances from a JSON file.
-
-        Returns:
-            list: A list of instances.
-        """
-        filename = cls.__name__ + ".json"
-        try:
-            with open(filename, 'r') as file:
-                data = json.load(file)
-                return [cls.create(d) for d in data]
-        except FileNotFoundError:
+    @staticmethod
+    def from_json_string(json_string):
+        """JSON to object"""
+        if json_string is None:
             return []
+        return json.loads(json_string)
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        screen = turtle.Screen()
+        screen.title("Rectangles and Squares")
+
+        t = turtle.Turtle()
+
+        def draw_rectangle(x, y, width, height):
+            t.penup()
+            t.goto(x, y)
+            t.pendown
+            for _ in range(2):
+                t.forward(width)
+                t.right(90)
+                t.forward(height)
+                t.right(90)
+
+        def draw_sqaure(x, y, side_length):
+            t.penup()
+            t.goto(x, y)
+            t.pendown()
+            for _ in range(4):
+                t.forward(side_length)
+                t.right(90)
+
+        for rectangle in list_rectangles:
+            draw_rectangle(
+                    rectangle.x,
+                    rectangle.y,
+                    rectangle.width,
+                    rectangle.height
+            )
+        
+        for square in list_sqaures:
+            draw_square(square.x, square.y, square.size)
+
+        turtle.mainloop()
 
     @classmethod
-    def savetofile(cls, listobjs):
-        """
-        Saves instances to a JSON file.
+    def save_to_file(cls, list_objs):
+        """Saves a list of objects to a JSON file.
 
         Args:
-            listobjs (list): List of instances to be saved.
+            cls (class): The class of the objects.
+            list_objs (list): The list of objects to be saved.
         """
-        filename = cls.__name__ + ".json"
-        data = [obj.to_dictionary() for obj in listobjs]
-        with open(filename, 'w') as file:
-            json.dump(data, file)
+        if list_objs is None:
+            list_dictionary = []
+        else:
+            list_dictionary = [obj.to_dictionary() for obj in list_objs]
+
+        filename = "{}.json".format(cls.__name__)
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(cls.to_json_string(list_dictionary))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Creates a new instance of the class based on the given dictionary.
+
+        Args:
+            dictionary (dict): A dictionary containing
+            the attributes of the instance.
+        """
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 2)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Loads instances from a JSON file and returns a list of instances.
+
+        Returns:
+            list: A list of instances loaded from the JSON file.
+        """
+        filename = "{}.json".format(cls.__name__)
+
+        try:
+            with open(filename, "r", encoding="utf-8") as f:
+                json_string = f.read()
+                list_dicts = cls.from_json_string(json_string)
+                instances = []
+                for d in list_dicts:
+                    instance = cls.create(**d)
+                    instances.append(instance)
+                return instances
+        except IOError:
+            return []

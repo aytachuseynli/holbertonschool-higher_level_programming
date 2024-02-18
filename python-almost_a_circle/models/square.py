@@ -22,6 +22,25 @@ class Square(Rectangle):
         """
         super().__init__(size, size, x, y, id)
 
+    @property
+    def size(self):
+        """set/get the size of square"""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        self.width = value
+        self.height = value
+
+    def __str__(self):
+        return "[Square] ({}) {}/{} - {}".format(
+                self.id,
+                self.x,
+                self.y,
+                self.size
+        )
+
+
     def update(self, *args, **kwargs):
         """
         Updates attributes of the square.
@@ -32,8 +51,8 @@ class Square(Rectangle):
         """
         if args:
             attr_names = ["id", "size", "x", "y"]
-            for i, arg in enumerate(args):
-                setattr(self, attr_names[i], arg)
+            for i in range(len(args)):
+                setattr(self, list_atr[i], arg[i])
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
@@ -46,25 +65,3 @@ class Square(Rectangle):
             dict: Dictionary representation of the square.
         """
         return {"id": self.id, "size": self.width, "x": self.x, "y": self.y}
-
-    def get_size(self):
-        """
-        Gets the size of the square.
-
-        Returns:
-            int: Size of the square.
-        """
-        return self.width
-
-    def set_size(self, size):
-        """
-        Sets the size of the square.
-
-        Args:
-            size (int): Size to set for the square.
-        """
-        self.width = size
-        self.height = size
-
-    size = property(get_size, set_size)
-
