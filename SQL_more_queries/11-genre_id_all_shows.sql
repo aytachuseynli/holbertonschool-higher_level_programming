@@ -1,5 +1,6 @@
 -- Genre ID for all shows
-SELECT *
-FROM cities
-WHERE state_id = (SELECT id FROM states WHERE name = 'California')
-ORDER BY id ASC;
+SELECT tv_shows.title, tv_show.genre_id
+FROM tv_shows
+LEFT JOIN tv_show_genres
+ON tv_shows.id = tv_show_genres.show_id
+ORDER BY tv_shows.title, tv_show_genres.genre_id ASC;
