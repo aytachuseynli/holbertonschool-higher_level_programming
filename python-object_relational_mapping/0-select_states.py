@@ -3,6 +3,7 @@
 
 import MySQLdb
 import sys
+import sqlalchemy
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
@@ -20,25 +21,15 @@ if __name__ == "__main__":
         db=database
     )
 
-    # Create a cursor object using cursor() method
     cursor = db.cursor()
-
-    # Prepare SQL query to select all states
     sql = "SELECT * FROM states ORDER BY id ASC"
-
     try:
-        # Execute the SQL command
         cursor.execute(sql)
-        
-        # Fetch all the rows in a list of tuples
         results = cursor.fetchall()
-
-        # Display results
         for row in results:
             print(row)
 
     except MySQLdb.Error as e:
         print("MySQL Error:", e)
     finally:
-        # Close the database connection
         db.close()
