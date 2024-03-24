@@ -5,6 +5,7 @@ All states via SQLAlchemy
 
 
 import sys
+from requests import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
