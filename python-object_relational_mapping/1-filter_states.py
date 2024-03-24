@@ -2,6 +2,9 @@
 """
  lists all states with a name starting with N (upper N)
 """
+import MySQLdb
+import sqlalchemy
+from sys import argv
 
 if __name__ == "__main__":
     username, password, database = sys.argv[1:4]
