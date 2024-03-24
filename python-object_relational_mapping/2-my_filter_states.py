@@ -13,7 +13,7 @@ if __name__ == "__main__":
     password = argv[2]
     db = argv[3]
     name = argv[4]
-    
+
     conn = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     
     cur = conn.cursor()
     cur.execute("""
-                SELECT * FROM states WHERE name = %s ORDER BY id ASC
+                SELECT * FROM states WHERE name = "{:s}" ORDER BY id ASC
                 """.format(name))
     query_rows = cur.fetchall()
     for row in query_rows:
