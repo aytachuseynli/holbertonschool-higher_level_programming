@@ -4,7 +4,7 @@
 """
 import MySQLdb
 import sqlalchemy
-from sys import argv
+import sys
 
 if __name__ == "__main__":
     username, password, database = sys.argv[1:4]
