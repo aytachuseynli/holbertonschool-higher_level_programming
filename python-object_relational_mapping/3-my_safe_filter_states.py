@@ -5,7 +5,6 @@
 """
 
 import MySQLdb
-import sqlalchemy
 import sys
 
 if __name__ == "__main__":
@@ -28,7 +27,8 @@ if __name__ == "__main__":
     cur.execute("""
                 SELECT *
                 FROM states
-                WHERE name = %s
+                WHERE name 
+                LIKE BINARY %s
                 ORDER BY id ASC
                 """.format(name))
     query_rows = cur.fetchall()
