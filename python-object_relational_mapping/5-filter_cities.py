@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-takes in the name of a state as an argument and 
+Takes in the name of a state as an argument and 
 lists all cities of that state
 """
 
@@ -20,21 +20,24 @@ if __name__ == "__main__":
         user=username,
         passwd=password,
         db=db,
-        charset="utf8")
-    
+        charset="utf8"
+    )
+
     cur = conn.cursor()
     cur.execute("""
-                    SELECT cities.name 
-                    FROM cities 
-                    INNER JOIN states 
-                    ON cities.state_id = states.id 
-                    WHERE states.name = "{}"
-                    ORDER BY cities.name
+                SELECT cities.name 
+                FROM cities 
+                INNER JOIN states 
+                ON cities.state_id = states.id 
+                WHERE states.name = "{}"
+                ORDER BY cities.name
                 """.format(name))
+
     query_rows = cur.fetchall()
     result = ""
     for i in range(len(query_rows)):
         result += query_rows[i][0] + ", "
     print(result[:-2])
+
     cur.close()
     conn.close()
