@@ -9,18 +9,12 @@ import sys
 
 
 if __name__ == "__main__":
-    # Check if correct number of arguments provided
-    if len(sys.argv) != 5:
-        print("Usage: ./3-my_safe_filter_states.py <username> <password> <database> <state_name>")
-        sys.exit(1)
+    argv = sys.argv
+    username = argv[1]
+    password = argv[2]
+    db = argv[3]
+    name = argv[4]
 
-    # Extract arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db = sys.argv[3]
-    name = sys.argv[4]
-
-    # Connect to MySQL database
     conn = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -30,18 +24,17 @@ if __name__ == "__main__":
         charset="utf8"
     )
 
-    # Create cursor
     cur = conn.cursor()
-
-    # Execute safe parameterized query
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cur.execute(query, (name,))
-
-    # Fetch and print results
+    cur.execute("""
+                SELECT *
+                FROM states
+                WHERE name 
+                LIKE BINARY %s
+                ORDER BY id ASC
+                """, (name ,))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
 
-    # Close cursor and connection
     cur.close()
     conn.close()
