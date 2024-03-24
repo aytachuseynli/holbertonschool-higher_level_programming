@@ -32,7 +32,9 @@ if __name__ == "__main__":
                     ORDER BY cities.name
                 """.format(name))
     query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
+    result = ""
+    for i in range(len(query_rows)):
+        result += query_rows[i][0] + ", "
+    print(result[:-2])
     cur.close()
     conn.close()
