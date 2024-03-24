@@ -34,12 +34,8 @@ if __name__ == "__main__":
     cur = conn.cursor()
 
     # Execute safe parameterized query
-    cur.execute(
-        """
-        SELECT * FROM states WHERE name = %s ORDER BY id ASC
-        """,
-        (name,)
-    )
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    cur.execute(query, (name,))
 
     # Fetch and print results
     query_rows = cur.fetchall()
