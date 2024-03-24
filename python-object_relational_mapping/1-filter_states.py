@@ -3,7 +3,6 @@
  lists all states with a name starting with N (upper N)
 """
 import MySQLdb
-import sqlalchemy
 import sys
 
 if __name__ == "__main__":
