@@ -3,6 +3,7 @@
 Lists all cities
 """
 
+
 import MySQLdb
 import sys
 
