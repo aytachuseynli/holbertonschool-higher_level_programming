@@ -2,6 +2,7 @@
 """lists all states """
 
 import MySQLdb
+import sqlalchemy
 import sys
 
 if __name__ == "__main__":
@@ -24,6 +25,5 @@ if __name__ == "__main__":
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
-
     cur.close()
     conn.close()
