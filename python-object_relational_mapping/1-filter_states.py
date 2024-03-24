@@ -7,7 +7,13 @@ import sqlalchemy
 import sys
 
 if __name__ == "__main__":
-    username, password, database = sys.argv[1:4]
+    if len(sys.argv) != 4:
+        print("Usage: ./1-filter_states.py <username> <password> <database>")
+        sys.exit(1)
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -15,7 +21,19 @@ if __name__ == "__main__":
         passwd=password,
         db=database
     )
-    cursor =  db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
-    [print(row) for row in cursor.fetchall()]
-    db.close
+
+    cursor = db.cursor()
+    sql = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+
+        for row in results:
+            print(row)
+
+    except MySQLdb.Error as e:
+        print("MySQL Error:", e)
+        
+    finally:
+        db.close()
