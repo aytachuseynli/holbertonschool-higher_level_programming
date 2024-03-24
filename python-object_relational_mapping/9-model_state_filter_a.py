@@ -4,15 +4,15 @@ Write a script that lists all State objects that contain the letter a from the d
 """
 
 
-
-
-if __name__ == "__main__":
-
-    import sys
+ import sys
     from model_state import Base, State
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
     
+
+if __name__ == "__main__":
+
+   
     """
     Model
     """
