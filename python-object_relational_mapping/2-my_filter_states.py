@@ -8,24 +8,29 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    argv = sys.argv
-    username = argv[1]
-    password = argv[2]
-    db = argv[3]
+    if len(sys.argv) != 5:
+        print("Usage: ./script.py <username> <password> <database> <state_name>")
+        sys.exit(1)
+
+    username, password, database, state_name = sys.argv[1:5]
 
     conn = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=username,
         passwd=password,
-        db=db,
-        charset="utf8")
-    
+        db=database,
+        charset="utf8"
+    )
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC")
+
+    sql = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    cur.execute(sql, (state_name,))
+
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
+
     cur.close()
     conn.close()
     
