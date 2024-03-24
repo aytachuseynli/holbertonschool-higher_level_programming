@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
- lists all cities
+Lists all cities
 """
 
 import MySQLdb
@@ -18,20 +18,20 @@ if __name__ == "__main__":
         user=username,
         passwd=password,
         db=db,
-        charset="utf8")
-    
+        charset="utf8"
+    )
+
     cur = conn.cursor()
     cur.execute("""
-                    SELECT cities.id, cities.name, states.name
-                    FROM cities
-                    INNER JOIN states
-                    ON cities.state_id=states.id
-                    ORDER BY cities.id ASC
+                SELECT cities.id, cities.name, states.name
+                FROM cities
+                INNER JOIN states
+                ON cities.state_id=states.id
+                ORDER BY cities.id ASC
                 """)
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
+
     cur.close()
     conn.close()
-    
-    
