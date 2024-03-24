@@ -6,32 +6,26 @@ in the states table of hbtn_0e_0_usa where name matches the argument.
 
 
 import MySQLdb
-import sys
-
+from sys import argv
 
 if __name__ == "__main__":
-    argv = sys.argv
-    username = argv[1]
-    password = argv[2]
-    db = argv[3]
-    name = argv[4]
-
-    conn = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=db,
-        charset="utf8")
-    
+    conn = MySQLdb.connect(host="localhost", 
+                           port=3306, 
+                           user=argv[1],
+                           passwd=argv[2], 
+                           db=argv[3], 
+                           charset="utf8")
     cur = conn.cursor()
-    cur.execute("""
-                SELECT * FROM states WHERE name = "{:s}" ORDER BY id ASC
-                """.format(name))
+    query = """
+               SELECT * 
+               FROM states 
+               WHERE name 
+               LIKE BINARY '{}' 
+               ORDER BY states.id ASC"""
+    query = query.format(argv[4])
+    cur.execute(query)
     query_rows = cur.fetchall()
     for row in query_rows:
-        if row[1] == argv[4]:
-            print(row)
+        print(row)
     cur.close()
     conn.close()
-    
