@@ -2,7 +2,6 @@
 """lists all states """
 
 import MySQLdb
-import sqlalchemy
 import sys
 
 if __name__ == "__main__":
