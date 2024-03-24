@@ -4,16 +4,16 @@ All states via SQLAlchemy
 """
 
 
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
 
-Base = declarative_base()
-
-class State(Base):
-    """
-    Class representing a state.
-    """
-    
-    __tablename__ = 'states'
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    name = Column(String(128), nullable=False)
+if __name__ == "__main__":
+    username, password, database = sys.argv[1:4]
+    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost/{database}', pool_pre_ping=True)
+    Base.metadata.create_all(engine)
+    session = sessionmaker(bind=engine)()
+    for state in session.query(State).order_by(State.id):
+        print("{}: {}".format(state.id, state.name))
+    session.close()
