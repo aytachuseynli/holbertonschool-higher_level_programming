@@ -8,6 +8,7 @@ in the states table of hbtn_0e_0_usa where name matches the argument.
 import MySQLdb
 from sys import argv
 
+
 if __name__ == "__main__":
     conn = MySQLdb.connect(host="localhost", 
                            port=3306, 
